@@ -6,10 +6,10 @@ Built with **Python**, **pandas**, **scikit-learn**, and **Streamlit**.
 ---
 
 ##  Features
-- 🧹 Cleans and visualizes Fitbit activity data  
-- 🤖 Trains Linear Regression & Random Forest models  
-- 📈 Shows correlations and feature importance  
-- 🌐 Interactive **Streamlit dashboard** for calorie predictions  
+- Cleans and visualizes Fitbit activity data  
+- Trains Linear Regression & Random Forest models  
+- Shows correlations and feature importance  
+- Interactive **Streamlit dashboard** for calorie predictions  
 
 ---
 
@@ -24,9 +24,9 @@ Built with **Python**, **pandas**, **scikit-learn**, and **Streamlit**.
 
 ---
 
-## ▶️ Run Locally
+## Run Locally
 
-1️⃣ **Clone the repository**
+ **Clone the repository**
 ```bash
 git clone https://github.com/<YOUR-USERNAME>/AI-Fitness-Tracker.git
 cd AI-Fitness-Tracker
