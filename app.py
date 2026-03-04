@@ -1,6 +1,5 @@
-# ===============================
+
 # AI Fitness Tracker – Streamlit App
-# ===============================
 
 import streamlit as st
 import pandas as pd
@@ -9,16 +8,12 @@ import math
 import pickle
 from sklearn.ensemble import RandomForestRegressor
 
-# -------------------------------
 # 1. Page setup
-# -------------------------------
 st.set_page_config(page_title="AI Fitness Tracker", page_icon="💪", layout="centered")
 st.title("💪 AI Fitness Tracker")
 st.markdown("### Predict calories burned based on your daily activity!")
 
-# -------------------------------
 # 2. Load or train model
-# -------------------------------
 @st.cache_resource
 def load_model():
     # Load dataset
@@ -53,9 +48,7 @@ def load_model():
 
 model = load_model()
 
-# -------------------------------
 # 3. Sidebar for user input
-# -------------------------------
 st.sidebar.header("Enter Your Activity Data")
 
 steps = st.sidebar.number_input("Steps", min_value=0, max_value=50000, value=8000)
@@ -64,9 +57,7 @@ fairly_active_min = st.sidebar.number_input("Fairly Active Minutes", min_value=0
 light_active_min = st.sidebar.number_input("Lightly Active Minutes", min_value=0, max_value=600, value=120)
 sedentary_min = st.sidebar.number_input("Sedentary Minutes", min_value=0, max_value=1500, value=600)
 
-# -------------------------------
 # 4. Prepare input for prediction
-# -------------------------------
 activity_index = steps * (very_active_min + fairly_active_min) / (sedentary_min + 1)
 log_steps = np.log1p(steps)
 
@@ -79,9 +70,7 @@ input_data = pd.DataFrame({
     'activity_index': [activity_index]
 })
 
-# -------------------------------
 # 5. Predict calories
-# -------------------------------
 if st.sidebar.button("Predict Calories Burned"):
     prediction = model.predict(input_data)[0]
     st.success(f"🔥 Estimated Calories Burned: **{prediction:.0f} kcal**")
@@ -94,8 +83,6 @@ if st.sidebar.button("Predict Calories Burned"):
     else:
         st.success("🏅 Excellent activity level! You're crushing it.")
 
-# -------------------------------
 # 6. Footer
-# -------------------------------
 st.markdown("---")
 st.caption("Built with ❤️ using Streamlit + scikit-learn")
